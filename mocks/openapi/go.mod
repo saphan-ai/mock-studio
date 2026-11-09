@@ -1,4 +1,4 @@
-module github.com/saphan-ai/mocks-studio/mocks/openapi
+module github.com/saphan-ai/mock-studio/mocks/openapi
 
 go 1.26
 

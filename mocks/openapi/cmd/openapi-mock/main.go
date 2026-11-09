@@ -1,4 +1,4 @@
-// Command openapi-mock serves any OpenAPI 3.x document as a mock that the Mocks Studio conformance suite accepts.
+// Command openapi-mock serves any OpenAPI 3.x document as a mock that the Mock Studio conformance suite accepts.
 package main
 
 import (
@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/saphan-ai/mocks-studio/mocks/openapi/internal/cli"
+	"github.com/saphan-ai/mock-studio/mocks/openapi/internal/cli"
 )
 
 func main() {

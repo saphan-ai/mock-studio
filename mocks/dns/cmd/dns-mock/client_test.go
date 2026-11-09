@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	dnsmock "github.com/saphan-ai/mocks-studio/mocks/dns"
+	dnsmock "github.com/saphan-ai/mock-studio/mocks/dns"
 )
 
 // udpHost is 127.0.0.1 unless this host refuses to send a UDP datagram to it (the fleet seat does,

@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/saphan-ai/mocks-studio/mocks/openapi/internal/oas"
+	"github.com/saphan-ai/mock-studio/mocks/openapi/internal/oas"
 )
 
 // Contract is the mock adapter version this engine implements.

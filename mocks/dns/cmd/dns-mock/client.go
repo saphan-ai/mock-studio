@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saphan-ai/mocks-studio/mocks/dns/dnsmsg"
+	"github.com/saphan-ai/mock-studio/mocks/dns/dnsmsg"
 )
 
 const (

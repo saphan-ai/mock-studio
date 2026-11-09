@@ -13,7 +13,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/saphan-ai/mocks-studio/conformance/testdata/nullmock"
+	"github.com/saphan-ai/mock-studio/conformance/testdata/nullmock"
 )
 
 func main() {

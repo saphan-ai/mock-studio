@@ -15,7 +15,7 @@ import (
 
 	"github.com/santhosh-tekuri/jsonschema/v5"
 
-	"github.com/saphan-ai/mocks-studio/mocks/openapi/internal/oas"
+	"github.com/saphan-ai/mock-studio/mocks/openapi/internal/oas"
 )
 
 const repoSpec = "../../../../spec/"

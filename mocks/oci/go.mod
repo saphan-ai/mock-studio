@@ -1,3 +1,3 @@
-module github.com/saphan-ai/mocks-studio/mocks/oci
+module github.com/saphan-ai/mock-studio/mocks/oci
 
 go 1.26
