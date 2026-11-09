@@ -1,6 +1,6 @@
 # oci-mock
 
-A free OCI Distribution v2 registry mock for Mocks Studio (`mocks.adapter/v1`), Apache-2.0.
+A free OCI Distribution v2 registry mock for Mock Studio (`mocks.adapter/v1`), Apache-2.0.
 Push, pull, manifests, tags and blob uploads, with auth, a rate limit and missing blobs as scenario settings.
 
     go -C mocks/oci build -o /tmp/oci-mock ./cmd/oci-mock

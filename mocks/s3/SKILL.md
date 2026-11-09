@@ -3,7 +3,7 @@ name: s3-mock
 description: Test code that uses S3-compatible object storage against a free local mock instead of a real store. Use when a test needs buckets, objects, multipart upload, presigned URLs or SigV4-signed requests, or needs slow reads, SlowDown throttling, forced errors or missing keys on demand. Not for AWS S3 with IAM, bucket policies, versioning or events (a paid pack).
 license: Apache-2.0
 metadata:
-  saphan.origin: mocks-studio
+  saphan.origin: mock-studio
   saphan.contract: mocks.adapter/v1
   saphan.mock: s3-mock
 ---

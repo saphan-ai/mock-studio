@@ -38,7 +38,7 @@ and ships:
 The specification and the READMEs say what a mock does and what the suite
 checks. They do not claim that a mock is a faithful copy of the real system
 beyond the cases it documents, and they do not describe how the closed part of
-Mocks Studio works. A change that adds such a claim will be asked to remove it.
+Mock Studio works. A change that adds such a claim will be asked to remove it.
 
 ## Commits and pull requests
 

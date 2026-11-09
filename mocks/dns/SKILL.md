@@ -4,7 +4,7 @@ description: Test name resolution and DNS filtering without a real resolver. Use
 license: Apache-2.0
 compatibility: Go 1.26 toolchain; loopback networking. Standard library only.
 metadata:
-  saphan.origin: mocks-studio
+  saphan.origin: mock-studio
   saphan.mock: dns-mock
   saphan.contract: mocks.adapter/v1
 ---

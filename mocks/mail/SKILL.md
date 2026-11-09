@@ -3,7 +3,7 @@ name: mail-mock
 description: Test that your system sends the right mail without a real mail server. Runs an SMTP relay (STARTTLS, AUTH PLAIN and LOGIN) and an IMAP mailbox per test run; send with smtplib, find the caught mail by Message-ID with imaplib, assert on the message.delivered event, and inject refusals, 451 failures and delays. Use when code under test sends e-mail, or when a check needs a recipient that rejects, defers or is slow.
 license: Apache-2.0
 metadata:
-  saphan.origin: mocks-studio
+  saphan.origin: mock-studio
   saphan.contract: mocks.adapter/v1
   saphan.mock: mail-mock
 ---

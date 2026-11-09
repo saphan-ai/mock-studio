@@ -3,7 +3,7 @@ name: oci-registry-mock
 description: Use when an agent must test container image push or pull (docker, podman, oras, skopeo, a Go or Python registry client) without a real registry, or must see how a client reacts to a registry that demands a login, rate-limits it or is missing a blob. Runs a free OCI Distribution v2 registry on loopback, one isolated registry per run.
 license: Apache-2.0
 metadata:
-  saphan.origin: mocks-studio
+  saphan.origin: mock-studio
   saphan.mock: oci-mock
   saphan.contract: mocks.adapter/v1
 ---

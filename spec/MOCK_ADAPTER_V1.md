@@ -1,7 +1,7 @@
 # Mock adapter specification, version 1 (`mocks.adapter/v1`)
 
 This document tells you how to write a **mock** — a program that stands in for a real system — in any
-language, so that a Mocks Studio core can run it, scope it to a test run, set its scenarios and read what
+language, so that a Mock Studio core can run it, scope it to a test run, set its scenarios and read what
 it saw. A mock is accepted when the conformance suite in `conformance/` passes against it. There is no
 library to link: you implement this specification, you run the suite, you read its lines.
 
@@ -322,7 +322,7 @@ exceed) is a `SKIP` with its reason.
 | `spec/MOCK_ADAPTER_V1.md` | this specification |
 | `spec/schemas/mocks-manifest-v1.schema.json` | the manifest schema |
 | `spec/schemas/mocks-refusal-v1.schema.json` | the refusal schema |
-| `spec/ecosystem-v1/mocks-event-v1.schema.json` | the event envelope (shared by Mocks Studio, Tests Studio and Saphan Studio) |
+| `spec/ecosystem-v1/mocks-event-v1.schema.json` | the event envelope (shared by Mock Studio, Test Studio and Saphan Studio) |
 | `spec/ecosystem-v1/mocks-event-v1.examples.json` | valid and invalid events, each invalid one breaking one field |
 | `spec/ecosystem-v1/mocks-runs-v1.openapi.yaml` | the run and scenario operations on the core (OpenAPI 3.1) |
 | `conformance/` | the suite and its fixtures: today a null mock; a mutant per rule, each breaking only that rule, is planned |

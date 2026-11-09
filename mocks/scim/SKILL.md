@@ -4,7 +4,7 @@ description: Test user provisioning against a free SCIM 2.0 service-provider moc
 license: Apache-2.0
 compatibility: Go 1.26 or newer to build and run (standard library only); curl for the examples. Loopback networking must be permitted on the host.
 metadata:
-  saphan.origin: mocks-studio
+  saphan.origin: mock-studio
   saphan.mock: scim-mock
   saphan.contract: mocks.adapter/v1
 ---
@@ -28,7 +28,7 @@ addresses.
 
 ## Start it
 
-From `mocks/scim` in the mocks-studio repository (loopback addresses only):
+From `mocks/scim` in the mock-studio repository (loopback addresses only):
 
 ```
 go run ./cmd/scim-mock serve --control 127.0.0.1:9100

@@ -3,7 +3,7 @@ name: kubernetes-mock
 description: Use when code under test talks to a Kubernetes API server and you need a stand-in you can script - namespaces, pods, configmaps and deployments with list, create, update, delete and WATCH, plus forced errors, throttling, latency and dropped watch streams, observable as mocks.event/v1 events. Not a cluster; read "What it does not cover" first.
 license: Apache-2.0
 metadata:
-  saphan.origin: mocks-studio/mocks/kubernetes
+  saphan.origin: mock-studio/mocks/kubernetes
   mock.name: kubernetes-mock
   mock.contract: mocks.adapter/v1
 ---
