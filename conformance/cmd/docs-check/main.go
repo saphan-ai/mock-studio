@@ -1,8 +1,8 @@
 // Command docs-check holds the public documents of the repository to what they say.
 //
 // It asserts the shape of README.md, SECURITY.md, CONTRIBUTING.md and LICENSE (the README's sections are present in
-// the model's order, every line under "What is measured" carries a command, every limit is dated, no address but
-// loopback and the documentation ranges), and then runs, from a fresh clone, every fenced block marked as a command
+// the published order, every line under "What is measured", where there is one, carries a command, every limit is
+// dated, no address but loopback and the documentation ranges), and then runs, from a fresh clone, every fenced block marked as a command
 // and every measured command.
 //
 // A block's info string says how to run it:

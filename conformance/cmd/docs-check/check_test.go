@@ -89,43 +89,49 @@ func TestSwappedSectionsNameTheOrder(t *testing.T) {
 	dir := copyDocs(t)
 	mutate(t, dir, "README.md", func(s string) string {
 		a := strings.Index(s, "## The problem")
-		b := strings.Index(s, "## How it works")
-		c := strings.Index(s, "## See a real example")
+		b := strings.Index(s, "## What this repository gives you today")
+		c := strings.Index(s, "## What is in this repository")
 		return s[:a] + s[b:c] + s[a:b] + s[c:]
 	})
-	wantFinding(t, StaticCheck(dir), `section "How it works"`, `comes before "The problem"`, "the order is: What it is")
+	wantFinding(t, StaticCheck(dir), `section "What this repository gives you today"`, `comes before "The problem"`, "the order is: Try it first (5 minutes)")
 }
 
+// The published README has no "What is measured" section, so the rules for one are exercised on a README that has it.
+const measuredHead = "## What is measured\n\n"
+
 func TestMeasuredLineWithoutCommandIsNamedByLine(t *testing.T) {
-	dir := copyDocs(t)
-	var line int
-	mutate(t, dir, "README.md", func(s string) string {
-		const cmd = " `ls -d mocks/*/ | wc -l`"
-		i := strings.Index(s, cmd)
-		line = strings.Count(s[:i], "\n") + 1
-		return strings.Replace(s, cmd, "", 1)
-	})
-	fs := StaticCheck(dir)
-	wantFinding(t, fs, "README.md:"+itoa(line), "carries no command", "7 free mocks")
+	fs := checkMeasured(ParseDoc("README.md", []byte(measuredHead+"- 7 free mocks: `ls -d mocks/*/ | wc -l`\n- 3 things measured\n")))
+	wantFinding(t, fs, "README.md:4", "carries no command", "3 things measured")
 	if len(fs) != 1 {
 		t.Fatalf("exactly the one line is named, got:\n%s", messages(fs))
 	}
 }
 
 func TestProseUnderMeasuredIsRefused(t *testing.T) {
-	dir := copyDocs(t)
-	mutate(t, dir, "README.md", func(s string) string {
-		return strings.Replace(s, "## What is measured\n\n", "## What is measured\n\nAll of this was measured.\n\n", 1)
-	})
-	wantFinding(t, StaticCheck(dir), "not a bullet carries no command", "All of this was measured.")
+	fs := checkMeasured(ParseDoc("README.md", []byte(measuredHead+"All of this was measured.\n")))
+	wantFinding(t, fs, "not a bullet carries no command", "All of this was measured.")
 }
 
 func TestUndatedLimitIsNamed(t *testing.T) {
 	dir := copyDocs(t)
 	mutate(t, dir, "README.md", func(s string) string {
-		return strings.Replace(s, "- 2026-10-31: only the `scim`", "- only the `scim`", 1)
+		return strings.Replace(s, "- 2026-11-02: The suite drives", "- The suite drives", 1)
 	})
-	wantFinding(t, StaticCheck(dir), "has no date", "only the `scim`")
+	wantFinding(t, StaticCheck(dir), "has no date", "The suite drives")
+}
+
+// Negative control for the command-block rule: a README with no fenced block is named.
+func TestReadmeWithoutFencedBlockIsNamed(t *testing.T) {
+	dir := copyDocs(t)
+	mutate(t, dir, "README.md", func(s string) string { return strings.ReplaceAll(s, "```", "") })
+	wantFinding(t, StaticCheck(dir), "README.md", "no fenced block")
+}
+
+// Negative control for the suite-command rule: CONTRIBUTING.md that no longer names the command is named.
+func TestContributingWithoutSuiteCommandIsNamed(t *testing.T) {
+	dir := copyDocs(t)
+	mutate(t, dir, "CONTRIBUTING.md", func(s string) string { return strings.Replace(s, "mocks-conformance", "the-suite", 1) })
+	wantFinding(t, StaticCheck(dir), "CONTRIBUTING.md", "does not name the suite command")
 }
 
 func TestForeignAddressIsNamed(t *testing.T) {
@@ -145,9 +151,9 @@ func TestTruncatedLicenseIsNamed(t *testing.T) {
 
 func TestSecurityAndContributingSectionsAreHeld(t *testing.T) {
 	dir := copyDocs(t)
-	mutate(t, dir, "SECURITY.md", func(s string) string { return strings.Replace(s, "## What is still being checked", "## Later", 1) })
-	mutate(t, dir, "CONTRIBUTING.md", func(s string) string { return strings.Replace(s, "## The clean-room rule", "## Rules", 1) })
-	wantFinding(t, StaticCheck(dir), `"What is still being checked" is missing`, `"The clean-room rule" is missing`)
+	mutate(t, dir, "SECURITY.md", func(s string) string { return strings.Replace(s, "## Supported versions", "## Later", 1) })
+	mutate(t, dir, "CONTRIBUTING.md", func(s string) string { return strings.Replace(s, "## Wording", "## Rules", 1) })
+	wantFinding(t, StaticCheck(dir), `"Supported versions" is missing`, `"Wording" is missing`)
 }
 
 // The runner: a measured number must be what its command prints.
@@ -238,9 +244,8 @@ func TestUnrunTextIsPublicWording(t *testing.T) {
 
 // A measured bullet that does not start with a number compares nothing, so it is a failure, both before and while running.
 func TestMeasuredBulletWithoutLeadingNumberFails(t *testing.T) {
-	dir := copyDocs(t)
-	mutate(t, dir, "README.md", func(s string) string { return strings.Replace(s, "- 7 free mocks:", "- seven free mocks:", 1) })
-	wantFinding(t, StaticCheck(dir), "does not start with the number its command prints", "seven free mocks")
+	fs := checkMeasured(ParseDoc("README.md", []byte(measuredHead+"- seven free mocks: `ls -d mocks/*/ | wc -l`\n")))
+	wantFinding(t, fs, "does not start with the number its command prints", "seven free mocks")
 
 	var out bytes.Buffer
 	var res Outcome
@@ -283,10 +288,10 @@ func TestForeignIPv6AddressIsNamed(t *testing.T) {
 func TestRetiredClaimsAreNamed(t *testing.T) {
 	dir := copyDocs(t)
 	mutate(t, dir, "SECURITY.md", func(s string) string {
-		return strings.Replace(s, "The suite checks some of the protections below and not others.", "Each protection below is a check in the suite.", 1)
+		return s + "\nEach protection below is a check in the suite.\n"
 	})
 	mutate(t, dir, "README.md", func(s string) string {
-		return strings.Replace(s, "- 2026-10-31: only the `scim` and `mcp` mocks refuse", "- 2026-10-31: the mocks listen on loopback only, by design; only the `scim` and `mcp` mocks refuse", 1)
+		return strings.Replace(s, "They listen on the local machine,", "The mocks listen on loopback only,", 1)
 	})
 	fs := StaticCheck(dir)
 	wantFinding(t, fs, "SECURITY.md", "each protection below is a check in the suite", "README.md", "listen on loopback only", "the scim and mcp mocks refuse a host")
@@ -295,7 +300,7 @@ func TestRetiredClaimsAreNamed(t *testing.T) {
 	}
 }
 
-// The Honest limits name the gaps the review measured, and each is dated.
+// The Honest limits name the gaps the published README states; each is dated (the clean test refuses an undated one).
 func TestHonestLimitsNameTheKnownGaps(t *testing.T) {
 	data, err := os.ReadFile(filepath.Join(repoRoot, "README.md"))
 	if err != nil {
@@ -305,7 +310,7 @@ func TestHonestLimitsNameTheKnownGaps(t *testing.T) {
 	for _, it := range ParseDoc("README.md", data).Sections[limitsSection] {
 		text.WriteString(it.Text + "\n")
 	}
-	for _, want := range []string{"9100", "9101", "18080", "syscall.Kill", "Setpgid", "virtual environment", "Python 3.12", "`scim` and `mcp`"} {
+	for _, want := range []string{"HTTP and TCP", "public documentation", "plain HTTP", "TypeScript", "developer machine"} {
 		if !strings.Contains(text.String(), want) {
 			t.Errorf("Honest limits do not mention %q", want)
 		}

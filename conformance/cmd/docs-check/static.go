@@ -9,39 +9,45 @@ import (
 	"strings"
 )
 
-// The public documents and the sections each must carry, in order. The README's order is the model
-// the project follows; a section may be followed by others, but these appear in this order.
+// The public documents and the sections each must carry, in order. The lists are the level-2 headings the published
+// documents carry (`grep -nE '^## ' README.md SECURITY.md CONTRIBUTING.md`); the check follows the documents. A
+// section may be followed by others, but these appear in this order.
 var (
 	readmeSections = []string{
-		"What it is",
+		"Try it first (5 minutes)",
 		"The problem",
-		"How it works",
-		"See a real example",
-		"Use it",
-		"What is measured",
+		"What this repository gives you today",
+		"What is in this repository",
+		"What it will be",
+		"How it will be built",
 		"Honest limits",
-		"Built in public",
-		"Repository layout",
-		"Documentation",
-		"For technical readers",
+		"Write your own mock",
+		"Development",
+		"Licence",
 	}
 	securitySections = []string{
-		"What it treats as untrusted",
-		"What it protects, and how",
-		"Weaknesses found and fixed",
-		"What is still being checked",
-		"Report a vulnerability privately",
+		"Reporting a vulnerability",
+		"What is in scope",
+		"What is not in scope",
+		"Supported versions",
 	}
 	contributingSections = []string{
-		"A mock is accepted when the suite passes",
-		"Run the suite",
-		"The clean-room rule",
+		"Before you start",
+		"Adding a mock",
+		"Tests",
+		"Wording",
+		"Commits and pull requests",
 	}
 )
 
 const (
+	// measuredSection is not required: the README carries no such section today. When a document has one, every
+	// line under it must carry a command that prints its number.
 	measuredSection = "What is measured"
 	limitsSection   = "Honest limits"
+	// contributingRunSection is where CONTRIBUTING.md tells a contributor how to run the suite.
+	contributingRunSection = "Adding a mock"
+	suiteCommand           = "mocks-conformance"
 )
 
 // retiredClaims are sentences the documents once made and the code does not hold. A document that says one again is
@@ -100,20 +106,23 @@ func StaticCheck(root string) []Finding {
 	if d := docs["README.md"]; d != nil {
 		out = append(out, checkMeasured(d)...)
 		out = append(out, checkLimits(d)...)
-		if !hasCommandBlock(d) {
-			out = append(out, Finding{File: d.Name, Msg: "no fenced block is marked `command` or `serve`; a stranger's path through the README must be commands that run"})
+		if len(d.Blocks) == 0 {
+			out = append(out, Finding{File: d.Name, Msg: "no fenced block; a stranger's path through the README must be commands in a block"})
 		}
 	}
-	if d := docs["CONTRIBUTING.md"]; d != nil && !hasCommandBlock(d) {
-		out = append(out, Finding{File: d.Name, Msg: "no fenced block is marked `command`; how to run the suite must be a command that runs"})
+	if d := docs["CONTRIBUTING.md"]; d != nil && !tellsHowToRunSuite(d) {
+		out = append(out, Finding{File: d.Name, Msg: fmt.Sprintf("section %q does not name the suite command in backticks (`... %s ...`); how to run the suite must be a command", contributingRunSection, suiteCommand)})
 	}
 	return out
 }
 
-func hasCommandBlock(d *Doc) bool {
-	for _, b := range d.Blocks {
-		if b.Has("command") || b.Has("serve") {
-			return true
+// tellsHowToRunSuite reports whether the contributing section carries the suite command as an inline code span.
+func tellsHowToRunSuite(d *Doc) bool {
+	for _, it := range d.Sections[contributingRunSection] {
+		for _, m := range codeSpanRe.FindAllStringSubmatch(it.Text, -1) {
+			if strings.Contains(m[1], suiteCommand) {
+				return true
+			}
 		}
 	}
 	return false
