@@ -120,14 +120,14 @@ repository stays open. This page will say when each part ships.
 
 ## Honest limits
 
-- Nothing here finds mocks, wires them for an agent, keeps their history or answers "did this happen". That is the
+- 2026-11-02: Nothing here finds mocks, wires them for an agent, keeps their history or answers "did this happen". That is the
   part above, not yet available.
-- The suite drives HTTP and TCP. It does not test each mock's own failure settings, load, or the order of events.
-- A mock covers part of the real system, built from public documentation. Read "what it does not cover" in its
+- 2026-11-02: The suite drives HTTP and TCP. It does not test each mock's own failure settings, load, or the order of events.
+- 2026-11-02: A mock covers part of the real system, built from public documentation. Read "what it does not cover" in its
   `SKILL.md` before you rely on it.
-- The mocks are for a developer machine or a test sandbox. They listen on the local machine, and several speak plain
+- 2026-11-02: The mocks are for a developer machine or a test sandbox. They listen on the local machine, and several speak plain
   HTTP with no password.
-- There is no TypeScript mock yet. Mocks of commercial systems are not in this repository.
+- 2026-11-02: There is no TypeScript mock yet. Mocks of commercial systems are not in this repository.
 
 ## Write your own mock
 
