@@ -10,7 +10,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/saphan-ai/mocks-studio/conformance/internal/schemas"
+	"github.com/saphan-ai/mock-studio/conformance/internal/schemas"
 )
 
 // specRoot is the repository's spec directory, relative to this package.

@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/saphan-ai/mocks-studio/mocks/s3/internal/s3mock"
+	"github.com/saphan-ai/mock-studio/mocks/s3/internal/s3mock"
 )
 
 func main() {

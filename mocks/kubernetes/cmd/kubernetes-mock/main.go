@@ -9,7 +9,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/saphan-ai/mocks-studio/mocks/kubernetes/kubemock"
+	"github.com/saphan-ai/mock-studio/mocks/kubernetes/kubemock"
 )
 
 // defaultControlURL is the control URL the published mocks.manifest.json names.

@@ -1,4 +1,4 @@
-module github.com/saphan-ai/mocks-studio/conformance
+module github.com/saphan-ai/mock-studio/conformance
 
 go 1.26
 

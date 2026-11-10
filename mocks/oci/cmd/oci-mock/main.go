@@ -13,7 +13,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/saphan-ai/mocks-studio/mocks/oci/internal/ocimock"
+	"github.com/saphan-ai/mock-studio/mocks/oci/internal/ocimock"
 )
 
 func main() {

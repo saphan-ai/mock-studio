@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/saphan-ai/mocks-studio/mocks/openapi/internal/oas"
+	"github.com/saphan-ai/mock-studio/mocks/openapi/internal/oas"
 )
 
 // maxProbeBody is the manifest schema's bound on a probe body.

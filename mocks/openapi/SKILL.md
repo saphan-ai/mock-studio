@@ -1,9 +1,9 @@
 ---
 name: openapi-mock
-description: Serve any OpenAPI 3.0 or 3.1 document as a mock of that API that Mocks Studio accepts. Use when you need a stand-in for a REST system that has an OpenAPI document, when you must test against failures (a forced status, a delay, a failure rate), or when you must assert on what a client sent to it.
+description: Serve any OpenAPI 3.0 or 3.1 document as a mock of that API that Mock Studio accepts. Use when you need a stand-in for a REST system that has an OpenAPI document, when you must test against failures (a forced status, a delay, a failure rate), or when you must assert on what a client sent to it.
 license: Apache-2.0
 metadata:
-  saphan.origin: mocks-studio/mocks/openapi
+  saphan.origin: mock-studio/mocks/openapi
   saphan.contract: mocks.adapter/v1
 ---
 
@@ -11,7 +11,7 @@ metadata:
 
 One command turns an OpenAPI document into a mock. The mock validates every request against the document,
 answers from the document's examples or schemas, records every call as an event, and takes scenario settings
-that force failures. It speaks the mock adapter contract `mocks.adapter/v1`, so a Mocks Studio core can run it and
+that force failures. It speaks the mock adapter contract `mocks.adapter/v1`, so a Mock Studio core can run it and
 the conformance suite accepts it.
 
 Run the commands below from the `mocks/openapi/` directory of the repository (the module root), with the

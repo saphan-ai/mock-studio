@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/saphan-ai/mocks-studio/mocks/dns/dnsmsg"
+	"github.com/saphan-ai/mock-studio/mocks/dns/dnsmsg"
 )
 
 // zones are the only names the mock declares or answers records for.

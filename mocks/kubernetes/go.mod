@@ -1,3 +1,3 @@
-module github.com/saphan-ai/mocks-studio/mocks/kubernetes
+module github.com/saphan-ai/mock-studio/mocks/kubernetes
 
 go 1.26

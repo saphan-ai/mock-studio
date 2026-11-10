@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/saphan-ai/mocks-studio/mocks/dns/dnsmsg"
+	"github.com/saphan-ai/mock-studio/mocks/dns/dnsmsg"
 )
 
 // validRecords is one record set the mock accepts; each refusal case below changes exactly one

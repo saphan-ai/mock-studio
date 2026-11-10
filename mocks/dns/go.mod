@@ -1,3 +1,3 @@
-module github.com/saphan-ai/mocks-studio/mocks/dns
+module github.com/saphan-ai/mock-studio/mocks/dns
 
 go 1.26

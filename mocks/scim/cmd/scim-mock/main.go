@@ -9,7 +9,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	scimmock "github.com/saphan-ai/mocks-studio/mocks/scim"
+	scimmock "github.com/saphan-ai/mock-studio/mocks/scim"
 )
 
 const usage = "usage: scim-mock serve [--control host:port]   (default 127.0.0.1:9100; loopback only)"

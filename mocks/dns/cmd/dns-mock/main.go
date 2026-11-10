@@ -17,7 +17,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	dnsmock "github.com/saphan-ai/mocks-studio/mocks/dns"
+	dnsmock "github.com/saphan-ai/mock-studio/mocks/dns"
 )
 
 const usage = "usage: dns-mock serve|call|set|ask|events [flags]"

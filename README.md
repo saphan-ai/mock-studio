@@ -1,6 +1,6 @@
-# Mocks Studio: stand-in systems for AI coding agents
+# Mock Studio: stand-in systems for AI coding agents
 
-<p align="center"><img src="docs/images/banner.png" alt="Mocks Studio: stand-in systems for AI coding agents" width="100%"></p>
+<p align="center"><img src="docs/images/banner.png" alt="Mock Studio: stand-in systems for AI coding agents" width="100%"></p>
 
 
 **For teams whose AI agents, tests or skills need a mail server, a file store or a user directory to work against,
@@ -22,8 +22,8 @@ its behaviour. An **event** is the mock's record of one thing that happened.
 **Terminal 1.** Start the mock. It keeps running; stop it with Ctrl+C.
 
 ```
-git clone https://github.com/saphan-ai/mocks-studio
-cd mocks-studio
+git clone https://github.com/saphan-ai/mock-studio
+cd mock-studio
 go -C mocks/kubernetes run ./cmd/kubernetes-mock serve --control 127.0.0.1:9100
 ```
 
@@ -31,7 +31,7 @@ go -C mocks/kubernetes run ./cmd/kubernetes-mock serve --control 127.0.0.1:9100
 `PASS`, `FAIL` or `SKIP`, then a `SUMMARY` line. It exits `0` when every check passed.
 
 ```
-cd mocks-studio
+cd mock-studio
 go -C conformance run ./cmd/mocks-conformance --manifest ../mocks/kubernetes/mocks.manifest.json
 ```
 
@@ -72,7 +72,7 @@ real user directory, that test removes real people's access.
 - **Nobody can ask the mock what it saw.** Did the code send the mail? To whom? How soon? Most mocks answer calls and
   keep no record anyone can query later.
 
-Tests and skills need the same thing. Tests Studio runs test suites against mocks instead of live systems. Skills
+Tests and skills need the same thing. Test Studio runs test suites against mocks instead of live systems. Skills
 Studio tries a skill against mocks before any agent is given it.
 
 ## What this repository gives you today
@@ -153,7 +153,7 @@ python -m unittest discover -s mocks/mail -v
 
 Contributions: [CONTRIBUTING.md](CONTRIBUTING.md). Reporting a vulnerability: [SECURITY.md](SECURITY.md).
 
-**The open parts of Saphan Studio:** [Discover](https://github.com/saphan-ai/discover) · [Mocks Studio](https://github.com/saphan-ai/mocks-studio) · [Tests Studio](https://github.com/saphan-ai/tests-studio) · [Skills Studio](https://github.com/saphan-ai/skills-studio). Each one works on its own. Together they are the instruments AI agents work with in [Saphan Studio](https://saphan.ai/).
+**The open parts of Saphan Studio:** [Discover Studio](https://github.com/saphan-ai/discover-studio) · [Mock Studio](https://github.com/saphan-ai/mock-studio) · [Test Studio](https://github.com/saphan-ai/test-studio) · [Skill Studio](https://github.com/saphan-ai/skill-studio). Each one works on its own. Together they are the instruments AI agents work with in [Saphan Studio](https://saphan.ai/).
 
 ## Licence
 

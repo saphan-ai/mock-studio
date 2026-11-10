@@ -1,3 +1,3 @@
-module github.com/saphan-ai/mocks-studio/mocks/s3
+module github.com/saphan-ai/mock-studio/mocks/s3
 
 go 1.26

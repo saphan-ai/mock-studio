@@ -4,7 +4,7 @@
 
 Please report privately, not in a public issue. Use GitHub's private
 vulnerability reporting for this repository: open the **Security** tab of
-`saphan-ai/mocks-studio`, choose **Report a vulnerability**, and describe what
+`saphan-ai/mock-studio`, choose **Report a vulnerability**, and describe what
 you found.
 
 Include the version or commit you tested, the mock and the smallest request or
@@ -31,7 +31,7 @@ particular, report:
 
 ## What is not in scope
 
-- The Mocks Studio engine, which is not in this repository.
+- The Mock Studio engine, which is not in this repository.
 - The behaviour of the real systems the mocks imitate. A mock answers like the
   real system for the cases it documents, and makes no other claim.
 - Credentials or data a user chose to load into a mock.
