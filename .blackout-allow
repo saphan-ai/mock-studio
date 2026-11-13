@@ -1,0 +1,7 @@
+conformance/go.sum secret-entropy module checksums are public hashes of open-source modules, not secrets
+mocks/openapi/go.sum secret-entropy module checksums are public hashes of open-source modules, not secrets
+mocks/s3/internal/s3mock/sigv4_test.go:13 secret-entropy AWS's published documentation example access key (contains EXAMPLE), used to check SigV4
+mocks/s3/internal/s3mock/sigv4_test.go:18 secret-entropy AWS's published documentation example secret key (contains EXAMPLE), used to check SigV4
+mocks/dns/settings_test.go:54 ipv4-not-reserved a test row checking the DNS mock refuses an address outside the reserved ranges
+mocks/dns/settings_test.go:69 ipv4-not-reserved a test row checking the DNS mock refuses an address outside the reserved ranges
+mocks/scim/filter.go:11 ipv4-not-reserved an RFC 7644 section number in a comment, not an address
