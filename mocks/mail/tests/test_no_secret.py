@@ -1,7 +1,7 @@
 """No secret in a log or an event: a password, a PIN, a token, or any base64 form of them.
 
 The instrument (`leaks`) is itself checked: it must find a planted secret, and the same scenario
-run against a logger that prints the raw line must fail it (law #27, negative control).
+run against a logger that prints the raw line must fail it (the negative control).
 """
 
 from __future__ import annotations
@@ -203,7 +203,7 @@ class RedactionUnitTest(MockTestCase):
 
 
 class WireLogTest(MockTestCase):
-    """What the log holds when a client sends a credential in a shape the parsers accept but the plain form is not (law #56)."""
+    """What the log holds when a client sends a credential in a shape the parsers accept but the plain form is not; none of it may reach the log."""
 
     def setUp(self) -> None:
         super().setUp()

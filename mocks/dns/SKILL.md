@@ -54,8 +54,8 @@ go run ./cmd/dns-mock ask --server 127.0.0.1:15353 --transport doh --name ads.ex
 ```
 
 Prints `rcode=… answers=N truncated=…` then one line per answer. Exit 0 when an answer arrived, 1 when none did.
-`--transport udp` is the third choice. A host that refuses to send UDP to `127.0.0.1` (the Saphan fleet seat
-does: EPERM) needs the scope opened with `"host":"::1"` and `--server [::1]:15353`.
+`--transport udp` is the third choice. A host that refuses to send UDP to `127.0.0.1` (a sandboxed host
+may do so: EPERM) needs the scope opened with `"host":"::1"` and `--server [::1]:15353`.
 
 ## 5. Force a failure
 

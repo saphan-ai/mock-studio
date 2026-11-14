@@ -65,8 +65,8 @@ go -C conformance run ./cmd/mocks-conformance --manifest ../mocks/kubernetes/moc
 `serve --control` prints the control URL on stdout and the request log on stderr. A core opens a scope with
 `POST /_mock/v1/scopes {"run_id": "...", "listener": {"protocol": "http", "host": "127.0.0.1", "port": N}}`; the
 Kubernetes API of that run is then at `http://127.0.0.1:N`. To point a client at it, use that URL as the server, with
-no TLS and no credentials. (A client built with the official Go client library was not run against this mock on the
-seat that wrote it; see the repository's return notes. The plain-HTTP tests cover the same discovery, list, create and
+no TLS and no credentials. (A client built with the official Go client library was not run against this mock.
+The plain-HTTP tests cover the same discovery, list, create and
 watch calls.)
 
 ## Settings

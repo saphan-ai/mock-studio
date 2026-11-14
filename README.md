@@ -72,7 +72,7 @@ real user directory, that test removes real people's access.
 - **Nobody can ask the mock what it saw.** Did the code send the mail? To whom? How soon? Most mocks answer calls and
   keep no record anyone can query later.
 
-Tests and skills need the same thing. Test Studio runs test suites against mocks instead of live systems. Skills
+Tests and skills need the same thing. Test Studio runs test suites against mocks instead of live systems. Skill
 Studio tries a skill against mocks before any agent is given it.
 
 ## What this repository gives you today
